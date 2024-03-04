@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <id id="demo1">Hello</id>
+    <div id="demo2">Hi</div>
+
+    <script>
+        var name ="Apple";
+        var price = 15.5;
+        var qty=10;
+        qty =11;
+        var total = price *qty;
+
+        const demo1 = document.getElementById("demo1");
+        const demo2 = document.getElementById("demo2");
+        demo1.innerHTML = "哈囉";
+        demo2.innerHTML = "嗨";
+
+        demo1.innerHTML = "水果名稱: " + name + "<br>"
+                        + "水果價格: " + price + "元<br>"
+                        +  "訂購數量: " + qty + "顆<br>"
+                        +  "訂購總額: " + total + "元<br>";
+        
+        demo2.innerHTML = "<img src='images/fruit/apple.jpg'>";
+
+
+
+
+    </script>
+</body>
+</html>

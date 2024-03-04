@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    img{width:30%;
+        border-radius:50%;
+        padding:0.12em;
+        margin:0.12em;
+        border:0.1em green solid;
+    
+    }
+    video{width:50%}
+
+    @media (min-width:992px) {
+        img{
+            width:15%;
+            border-radius:50%;
+            padding:0.12em;
+            margin:0.12em;
+            border:0.1em green solid;
+        }
+    }
+    @media (min-width:1200px) {
+        img{
+            width:7.5%;
+            border-radius:50%;
+            padding:0.12em;
+            margin:0.12em;
+            border:0.1em green solid;
+        }
+    }
+    </style>
+</head>
+<body>
+    <script>
+
+        for(i=0;i<=11;i++){
+            
+            document.write(`<img src="images/fruit2/${i}.jpg" onclick="descFruit(${i})">`)
+        }
+
+        fruit=["Litchi",       
+                "Apple",
+                "Banana",
+                "Grape",
+                "Watermelon",
+                "Mango",
+                "Strawberry",
+                "Cherry",
+                "Guava",
+                "Longan",
+                "Peach",      
+                "Pineapple"    
+                ]
+
+        document.write("<hr>")
+
+      
+
+
+        var j=0;
+        while(j <fruit.length){
+            var r = Math.ceil(Math.random() * 255)
+            var g = Math.ceil(Math.random() * 255)
+            var b = Math.ceil(Math.random() * 255)
+            document.write(`<img src="images/fruit/${fruit[j]}.jpg" style="border-radius:5px;border-color:rgb(${r},${g},${b});">`)
+            j++;
+        }
+        function descFruit(i){
+            var desc =new Array(
+                "荔枝 原生自中國南方的亞熱帶水果 " ,
+            "蘋果 含有大量的膳食纖維及維他命C",
+            "香蕉 富含膳食纖維中的果膠，可促進腸蠕動",
+            "葡萄 營養豐富，含有多種礦物質",
+            "西瓜 香甜多汁，被稱為「夏季瓜果之王」",
+            "芒果 富含大量的維生素C，抗氧化及美膚",
+            "草莓 擁有豐富的維生素C",
+            "櫻桃 中醫古籍稱「滋潤皮膚」、「令人好顏色，美態」",
+            "巴樂 含豐富維生素C，低熱量、高纖維、水分高",
+            "龍眼 色澤晶瑩、肉質鮮嫩、甜美爽口",
+            "桃子 果皮光澤具彈性、絨毛綿密，果實飽滿",
+            "鳳梨 果肉中的酵素能解油膩、助消化、降血壓"
+            )
+            window.alert(desc[i])
+        }
+    </script>
+
+    <hr>
+    <video controls>
+        <source src="videos/Raspberries.mp4" type="video/mp4">
+    </video>
+</body>
+</html>

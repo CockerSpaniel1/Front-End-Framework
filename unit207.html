@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+
+    <script>
+        const d = document.getElementById("demo");
+        var str = "";
+
+
+        var myfruit=()=>{
+            str += "我最喜歡的水果是香蕉"
+            d.innerHTML = str
+        }
+
+        myfruit();
+
+        var yourfruit=(price,qty)=>{  
+            str += `我最喜歡的水果是西瓜，總計 ${name}+<br>`; 
+            d.innerHTML  = str;
+        }
+
+        yourfruit(79,5);
+
+        var hisfruit=()=>{
+            str += "我最喜歡的水果是蘋果<br>";
+        }
+
+        d.innerHTML = hisfruit();
+
+        // var herfuit=(price,qty)=>{
+        //     str += `我最喜歡的水果是${price}`;
+        // }
+        // d.innerHTML = herfuit(795);
+    </script>
+</body>
+</html>

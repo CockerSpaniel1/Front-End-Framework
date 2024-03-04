@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo1">Click Me</div>
+    <div id="demo2">Click Me</div>
+    <div id="demo3">Click Me</div>
+    <div id="demo4">Click Me</div>
+    <script>
+        const d1 = document.getElementById("demo1");
+        const d2 = document.getElementById("demo2");
+        const d3 = document.getElementById("demo3");
+        const d4 = document.getElementById("demo4");
+
+        d1.onclick=function(){
+            myfruit();
+        }
+        d2.onclick=function(){
+            yourfruit("芭樂");
+        }
+        d3.onclick=function(){ 
+            d3.innerHTML = hisfruit();
+        }
+        d4.onclick=function(){
+            d4.innerHTML = herfuit("鳳梨");
+        }
+
+        function myfruit(){
+            d1.innerHTML = "我最喜歡的水果是香蕉";
+        }
+
+        function yourfruit(name){  
+            d2.innerHTML = `我最喜歡的水果是${name}`; 
+        }
+
+        function hisfruit(){
+            return "我最喜歡的水果是蘋果";
+        }
+
+        function herfuit(name){
+            return `我最喜歡的水果是${name}`;
+        }
+    </script>
+</body>
+</html>
