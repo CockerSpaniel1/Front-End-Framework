@@ -1,0 +1,34 @@
+
+        h1{
+            color:gold;
+            background-color: darkolivegreen;
+        }
+
+
+        h3{
+            background-color: darkolivegreen;
+
+        }
+        p{color:gray;
+        &::before{ content: "(✪㉨✪)";}}
+
+        #myp{color:green}
+
+        .mystyle{background-image: url(images/fruit/apple.jpg);}
+        img{
+            width: 25%;
+            border-radius: 50%;
+            border: 1.25rem green solid;
+            padding: 0.8rem;
+        &:hover{
+            border:1.25rem gold solid;
+            cursor:pointer;
+        }
+        &:active{
+            border:1.25rem red solid;
+        }
+        }
+        [class *=my]{
+            border:0.5rem red solid;
+            padding:0.8rem;
+        }
