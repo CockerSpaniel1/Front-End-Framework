@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>use unit02.js</title>
+
+</head>
+<body>
+    <div id="demo"></div>
+    <script src="unit02.js"></script>
+    <script>
+        const hisfruit= new MyFruit(4, "芭樂", 20 ,5 ,"紅心芭樂" ,["高雄","台南"]);
+        document.getElementById("demo").innerHTML = myfruit.getInfo();
+        document.getElementById("demo").innerHTML += "<hr>" + hisfruit.getInfo();
+    </script>
+</body>
+</html>
