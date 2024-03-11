@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        input{
+            display: block;
+        }
+        .mydiv{
+            width:30%;
+            float:left;
+
+        }
+        .mydiv img{
+            border-radius:50%;
+            margin:0.8em;
+            width:50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+    <h1>{{title}}</h1>
+    <hr>
+    <input type="text" placeholder="Enter Fruit name" v-model ="name">
+    <input type="text" placeholder="Enter Fruit price" v-model ="price">
+    <input type="text" placeholder="Enter Fruit qty" v-model ="qty">
+
+    <div id="name">{{name}}</div>
+    <div id="price">{{price}}</div>
+    <div id="qty">{{qty}}</div>
+    <div id="result">{{"Total:" + price *qty + "元"}}</div>
+    <hr>
+    <button v-on:click="isShow=true,isShow2=false">show Strawberry</button>
+    <button v-on:click="isShow=false,isShow2=true">show Guava</button>
+    <button v-on:click="isShow=false,isShow2=false">show Cherry</button>
+    <hr>
+    <div class="mydiv" v-if="isShow"><img src="fruit2/6.jpg" alt="">
+        <p>{{"isShow: "+isShow +" isShow2: "+isShow2}}</p></div>
+
+    <div class="mydiv" v-else-if="isShow2"><img src="fruit2/7.jpg" alt="">
+        <p>{{"isShow: "+isShow +" isShow2: "+isShow2}}</p></div>
+
+    <div class="mydiv" v-else><img src="fruit2/8.jpg" alt="">
+        <p>{{"isShow: "+ isShow +" isShow2: "+isShow2}}</p></div>
+</div>
+
+    <script>
+        let fruit = Vue.createApp({
+            data:function(){
+                return {
+                    title:"Welcome to Kaohsiung Fruit Stand",
+                    name:"",
+                    price:0,
+                    qty:0,
+                    isShow:false,
+                    isShow2:false,
+                }
+            }
+        })
+
+        fruit.mount("#demo")
+    </script>
+</body>
+</html>

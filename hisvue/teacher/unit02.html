@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE CDN</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        input{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <h1>{{title}}</h1>
+        <hr>
+        <!-- v-model 在元件上實作雙向綁定-->
+        <input placeholder="Enter Fruit Name" v-model="name">
+        <input placeholder="Enter Fruit price" v-model="price">
+        <input placeholder="Enter Fruit qty" v-model="qty">
+        <div id="name">{{name}}</div>
+        <div id="price">{{price}}</div>
+        <div id="qty">{{qty}}</div>
+        <div id="result">{{"Total: " + price*qty + " 元"}}</div>
+    </div>
+
+    <script>
+        let fruit=Vue.createApp({   //宣告應用程式物件實體變數
+           
+            data:function(){    //記錄欲使用之變數,必須傳回物件{},將要使用的變數資料置於物件之中。
+                return{
+                    title:'Welcome to Kaohsiung Fruit Stand',
+                    name:'',
+                    price:0,
+                    qty:0
+                }
+
+            }
+
+
+        });
+
+        fruit.mount("#demo");
+    </script>
+</body>
+</html>

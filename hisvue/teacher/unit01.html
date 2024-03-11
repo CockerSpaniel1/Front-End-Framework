@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE CDN</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        input{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <h1>{{title}}</h1>
+        <hr>
+        <input placeholder="Enter Fruit Name">
+        <input placeholder="Enter Fruit price">
+        <input placeholder="Enter Fruit qty">
+        <div id="name"></div>
+        <div id="price"></div>
+        <div id="qty"></div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        let fruit=Vue.createApp({   //宣告應用程式物件實體變數
+            data(){
+                return{
+                    title:"Welcome to Kaihsiung Fruit Stand"
+                }
+            }
+        });
+
+        fruit.mount("#demo");
+    </script>
+</body>
+</html>

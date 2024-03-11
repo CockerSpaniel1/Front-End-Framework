@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE CDN,methods</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        input{
+            display: block;
+        }
+        .mydiv{
+            width: 30%;
+            float: left;
+        }
+
+        .mydiv img{
+            border-radius: 50%;
+            margin: 0.8em;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <h1>{{title}}</h1>
+        <hr>
+        <!-- v-model 在元件上實作雙向綁定-->
+        <!-- 監聽鍵盤-->
+        <input placeholder="Enter Fruit Name" v-model="name" @keyup.enter="checkout">
+        <input placeholder="Enter Fruit price" v-model="price" @keyup.enter="checkout">
+        <input placeholder="Enter Fruit qty" v-model="qty" @keyup.enter="checkout">
+        <div id="name">{{name}}</div>
+        <div id="price">{{price}}</div>
+        <div id="qty">{{qty}}</div>
+        <div id="result">{{"Total: " + price*qty + " 元"}}</div>
+
+        <hr>
+        <button @click="show(true,false)">Show Apple</button>
+        <button @click="show(false,true)">Show Banana</button>
+        <button @click="show(false,false)">Show Grape</button>
+
+        <hr>
+        <div class="mydiv" v-if="isShow">
+            <img src="images/fruit2/1.jpg">
+            <p>{{isShow + "," + isShow2}}</p>
+        </div>
+
+        <div class="mydiv" v-else-if="isShow2">
+            <img src="images/fruit2/2.jpg">
+            <p>{{isShow + "," + isShow2}}</p>
+        </div>
+
+        <div class="mydiv" v-else>
+            <img src="images/fruit2/3.jpg">
+            <p>{{isShow + "," + isShow2}}</p>
+        </div>
+
+       
+        <div style="clear: both;">
+            <hr>
+        <img src="images/off.gif" v-if="isHide" @click="hide">
+        <img src="images/on.gif" v-if="isHide2" @click="hide">
+        </div>   
+    </div>
+
+    <script>
+        let fruit=Vue.createApp({   //宣告應用程式物件實體變數
+           
+            data:function(){    //記錄欲使用之變數,必須傳回物件{},將要使用的變數資料置於物件之中。
+                return{
+                    title:'Welcome to Kaohsiung Fruit Stand',
+                    name:'',
+                    price:0,
+                    qty:0,
+                    isShow:false,
+                    isShow2:false,
+                    isHide:true,
+                    isHide2:false
+                }
+            },
+
+            methods: {  //撰寫函數的地方,當data中的資料有變動,則methods內的函數會重新觸發演算
+                show(x,y){
+                    this.isShow=x;
+                    this.isShow2=y;
+                },
+
+                hide(){
+                    this.isHide=!this.isHide;
+                    this.isHide2=!this.isHide2;
+                },
+
+                checkout(){
+                    if(this.price!='' && this.name!='' && this.qty!=""){
+                        alert(this.name + ',總計:' + this.price * this.qty + "元");
+                    }
+                }
+
+
+
+            
+            },
+
+        });
+
+        fruit.mount("#demo");
+    </script>
+</body>
+</html>
