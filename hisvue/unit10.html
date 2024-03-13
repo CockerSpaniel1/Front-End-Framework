@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+
+        <h1>{{title}}</h1>
+        <my-form/>
+
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    let fruit=Vue.createApp({
+        data:function(){
+            return{
+                title:"Welcome to kaohsiung Fruit Stand",
+            };
+        }
+    });
+
+    fruit.component("my-form",{
+        template:`
+        <form @submit="handleLogin">
+            <h3>{{subtitle}}</h3>
+            <input type="email" placeholder="enter email" >
+            <input type="password" placeholder="enter password" >
+            <button>LOGIN</button>
+        </form>
+        `,
+        data(){
+            return {subtitle:"會員登入系統",
+            };
+        },
+        methods:{
+            handleLogin(){
+                alert("LOGIN OK!!")
+            }
+        }
+
+    })
+    fruit.mount("#demo")
+</script>
+
+    <style>
+        input{
+            display: block;
+        }
+
+        </style>
+
+</body>
+</html>

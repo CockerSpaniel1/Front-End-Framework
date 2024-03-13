@@ -34,6 +34,7 @@
     <div id="qty">{{qty}}</div>
     <div id="result">{{"Total:" + price *qty + "元"}}</div>
     <hr>
+    <button @click.right="checkout">checkout</button>
     <button @click="show(true,false)">show Strawberry</button>
     <button @click="show(false,true)">show Guava</button>
     <button @click="show(false,false)">show Cherry</button>

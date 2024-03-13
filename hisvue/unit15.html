@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+
+        <h1>{{title}}</h1>
+        <my-form/>
+
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    let fruit=Vue.createApp({
+        data:function(){
+            return{
+                title:"Welcome to kaohsiung Fruit Stand",
+            };
+        }
+    });
+
+    fruit.component("my-form",{
+        template:`
+        <form @submit.prevent="handleLogin">
+            <h3>{{subtitle}}</h3>
+        <!-- <your-form v-model="email" v-bind:label="emailLabel" />
+            <your-form v-model="password" v-bind:label="passwordLabel" />-->
+
+        <!-- <your-form v-model="email" :label="emailLabel" :modelValue="email"/>
+            <your-form v-model="password" :label="passwordLabel" :modelValue="password"/>-->
+
+            <your-form v-for="(info,i) in myinfo" 
+            :key='i' 
+            :v-model="info.value"
+            :label="info.labe" 
+            :type="info.type"
+            :placeholder=info.placeholder
+            />
+
+            <button>LOGIN</button>
+
+            <hr>
+
+            <!--<p v-for="f in myfruit">{{f}}</p>-->
+            <p v-for="(f,i) in myfruit" :k='i'>{{i + '->' + f}}</p>
+
+        </form>
+        `,
+        component:['your-form'],
+        data(){
+            return {
+                subtitle:"會員登入系統",
+                email:"",
+                password:"",
+                emailLabel:"輸入電子郵件",
+                passwordLabel:"輸入密碼",
+                myfruit:["apple" ,"banana", "cherry", "grape", "watermelon"],
+                myinfo:[
+                    {
+                        label:"Enter Email",
+                        type:"email",
+                        value:"",
+                        placeholder:"email"
+
+                    },
+                    {
+                        label:"Enter Password",
+                        type:"password",
+                        value:"",
+                        placeholder:"password"
+                    },
+                    {
+                        label:"Enter Nickname",
+                        type:"text",
+                        value:"",
+                        placeholder:"nickname"
+                    },
+                ]
+            };
+        },
+        methods:{
+            handleLogin(){
+                alert("LOGIN OK!!");
+                console.log("email:", this.email);
+                console.log("password:", this.password);
+            }
+        }
+
+    })
+    fruit.component("your-form",{
+        template:`
+        <label>
+        {{label}}
+        <input :type="type"  v-model="inputValue" :placeholder="placeholder"/>
+        </label>
+        `,
+        props:["label", "modelValue", "type", "placeholder"],
+
+        computed:{
+            inputValue:{
+                get(){
+                    return this.modelValue;
+                },
+                set(value){
+                    console.log(value)
+                    this.$emit("update:modelValue", value);
+                }
+            }
+        }    
+    
+    })
+
+
+    fruit.mount("#demo")
+</script>
+
+    <style>
+        input{
+            display: block;
+        }
+
+        </style>
+
+</body>
+</html>

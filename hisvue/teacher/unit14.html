@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Loop</title>
+</head>
+<body>
+    <div id="demo">
+        <h1>{{title}}</h1>
+        <my-form />      
+    </div>
+
+    <!-- cdn -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        
+        let fruit=Vue.createApp({
+            data:function(){
+                return{
+                    title:"Welcome to Kaohsiung Fruit Stand",
+                };
+            }
+        });
+
+        //自訂元件,my-form
+        fruit.component('my-form',{
+
+            //建立樣板
+            template:`
+            <!-- 會刷新 -->
+       <!--     <form @submit="handleLogin"> -->
+
+            <!-- 不會刷新 -->
+            <form @submit.prevent="handleLogin">
+                <h3>{{subtitle}}</h3>
+                
+             <!--   <your-form v-model='email' v-bind:label='emailLabel' />
+                <your-form v-model='password' v-bind:label='passwordLabel' />            -->
+
+
+                <!--
+                    一定要加上『:』,否則為靜態label,讀不到屬性內的值
+                    <your-form v-model='email' :label='emailLabel' />
+                    
+                    -->
+                <your-form v-model='email' :label='emailLabel' :modelValue='email' />
+                <your-form v-model='password' :label='passwordLabel' :modelValue='password'/>                    
+                <button>LOGIN</button>
+
+                <hr>
+
+                <!-- Loop -->
+                <!--<p v-for="f in myfruit">{{f}}</p>-->
+
+                <p v-for="(f,i) in myfruit " :k='i'> {{ i+ '->' + f}}</p>
+            </form>                
+            `,
+            component:['your-form'],
+
+            //宣告變數
+            data(){
+                return{
+                    subtitle:"會員登入系統",  
+                    email:'',
+                    password:'',
+                    emailLabel:'輸入電子郵件',
+                    passwordLabel:"輸入密碼" ,
+                    myfruit:[
+                        'apple',
+                        'banana',
+                        'cherry',
+                        'grape',
+                        'watermelon'
+                    ]                 
+                };
+            },
+
+            //建立方法
+            methods: {
+                handleLogin(){
+                    alert('LOGIN OK!!');
+                    console.log("email:",this.email);
+                    console.log("password:",this.password);
+                }
+            },
+        }); //my-form end
+
+        fruit.component('your-form',{
+            template:`
+                <label>
+                {{label}}   
+                <input type="text" v-model='inputValue' />             
+                </label>
+            `,
+            props:['label','modelValue'],
+
+            computed:{
+                inputValue:{
+                    //getter
+                    get(){
+                        return this.modelValue;
+                    },
+
+                    //setter
+                    set(value){
+                        console.log(value);
+                        //$emit 向外層傳遞事件,$emit 除了可以傳遞事件外,也可以傳遞參數。
+                        this.$emit('update:modelValue', value);
+                    }
+
+                }
+            }
+        }); //your-form end
+      
+
+
+        fruit.mount("#demo");
+
+    </script>
+
+    <style>
+        input{
+            display: block;
+        }
+    </style>
+    
+</body>
+</html>
