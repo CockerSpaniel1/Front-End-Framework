@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Vue lifecycle</title>
+</head>
+<body>
+
+    <div id="demo">
+        <p>{{slogan}}</p>
+        <button @click="vueLife">水果買一送一</button>
+    </div>
+
+    <script>
+        const { createApp,onMounted, onUnmounted ,onUpdated,ref} = Vue;
+        const fruit=createApp({
+            setup(){
+               // const slogan='新鮮水果,樣樣領鮮';                
+                const slogan = ref('新鮮水果，樣樣領鮮。');
+                let flag=false; //檢測組件是否已經卸載
+
+                //在組件被掛載後執行
+                onMounted(()=>{
+                    console.log('組件被掛載(mounted)');
+                });
+
+                //在組件更新完成後執行
+                onUpdated(()=>{
+                    console.log('組件被更新(update)','flag=' + flag);   //false
+                });
+
+                //在組件卸載後執行
+                onUnmounted(()=>{
+                    
+                    //判斷組件是否已卸載,避免在重新Render時再次觸發
+                    if(!flag){
+                        console.log('組件已被卸載(Unmounted)');
+                        flag=true;  //更新旗標為已卸載
+                    }
+
+                    console.log('flag='+flag);      //true
+
+                });
+
+                //點選按鈕觸發生命週期
+                const vueLife=()=>{
+                    console.log('按下按鈕,觸發vueLife函數');
+                    slogan.value='台灣水果真好呷!'; //更新所對應的資料,觸發組件更新
+                    setTimeout(()=>{
+                        fruit.unmount();   //延遲一段時段後卸載組件
+                    },5000);    //5秒後卸載組件 ,1秒等於1000毫秒
+                };
+
+                return{
+                    slogan,
+                    vueLife
+                };
+
+            }
+
+        });
+
+        fruit.mount("#demo");
+    </script>
+    
+</body>
+</html>
