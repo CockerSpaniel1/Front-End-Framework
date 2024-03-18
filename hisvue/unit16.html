@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+
+    <div id="demo">
+
+        <p>{{slogan}}</p>
+        <button @click="vueLife">水果買一送一</button>
+
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const {createApp, onMounted ,onUnmounted,onUpdated,ref} = Vue;
+        const fruit= createApp({
+            setup(){
+                const slogan = ref("新鮮水果，樣樣領鮮");
+                let flag =false;
+
+                onMounted(()=>{
+                    console.log("組件被掛載(mounted)")
+                });
+
+                onUpdated(()=>{
+                    console.log("組件被更新(updatedted)", "flag=" +flag)
+                })
+
+                onUnmounted(()=>{
+                    if(!flag){
+                        console.log("組件已被卸載(Unmounted)");
+                        flag= true;
+                    }
+
+                    console.log("flag=" + flag)
+                })
+                const vueLife=()=>{
+                    console.log("按下按鈕，觸發vueLife函數")
+                    slogan.value= "台灣水果真好甲"
+                    setTimeout(()=>{
+                        fruit.unmount()
+                    },5000)
+                }
+
+                return{slogan,vueLife}
+            }
+        });
+
+
+        fruit.mount("#demo");
+
+    </script>
+    
+</body>
+</html>
