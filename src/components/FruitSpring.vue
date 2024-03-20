@@ -11,5 +11,9 @@
 </template>
 
 <style scoped>
-
+    
+    img {
+        width:30%;
+        border-radius: 25px;
+    }
 </style>
