@@ -1,0 +1,28 @@
+body{
+  margin: 0px;
+}
+
+nav{
+  background-color: orange;
+  padding: 1.5vw;
+}
+
+
+.navLink{
+  padding: 1.0vw;
+}
+
+nav a{
+  text-decoration: none;
+  color: green;
+  font-size: 1.2rem;
+}
+
+
+
+nav a:hover{
+  color: yellow;
+  border-bottom: 1px solid green;
+  border-top:1px solid green ;
+}
+
