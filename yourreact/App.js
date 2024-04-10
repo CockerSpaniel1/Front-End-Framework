@@ -16,14 +16,14 @@ function App(props) {
         <h1>Welcome to {subject}</h1>
         <img src={apple} className="fruit" alt="logo" />
         <p>{fruit}<br></br>{desc}</p>
-
+        
         <a
           className="App-link"
-          href="https://www.bsnet.com.tw"
+          href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
-          BSNET
+          Learn React
         </a>
       </header>
     </div>

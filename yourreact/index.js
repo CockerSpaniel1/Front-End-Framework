@@ -3,19 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import FruitTaiwan from './FruitTaiwan';  //滙入Component
+import FruitTaiwan from './FruitTaiwan';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App subject='Kaohsiung Fruit' />
+    <App subject='Taiwan Fruit' />
   </React.StrictMode>
 );
 
-
-const demo=ReactDOM.createRoot(document.getElementById('demo'));
+const demo = ReactDOM.createRoot(document.getElementById('demo'));
 demo.render(
-  <FruitTaiwan />
+    <FruitTaiwan  />
 );
 
 // If you want to start measuring performance in your app, pass a function
