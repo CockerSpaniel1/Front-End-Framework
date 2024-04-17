@@ -27,4 +27,5 @@ const MyInput=()=>{
 
         </div>
     )
-} export default MyInput;
+}
+export default MyInput;
