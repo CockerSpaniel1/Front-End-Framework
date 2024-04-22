@@ -18,7 +18,7 @@ const News=()=>{
             <h3 style={{paddingLeft:'3vw'}}>最新消息</h3>    
             <hr/>       
             <input type="text" placeholder="Enter Fruit Name" onChange={(e)=>setFruit(e.target.value)}/><br /> 
-            <button onClick={()=>{navigate(`/Product/${fruit}`)}} style={mystyle}>芒果買一送一，欲購從速</button>
+            <button onClick={()=>{fruit===""?alert("請輸入水果名稱"):navigate(`/Product/${fruit}`)}} style={mystyle}>芒果買一送一，欲購從速</button>
         </div>
     )
 };
