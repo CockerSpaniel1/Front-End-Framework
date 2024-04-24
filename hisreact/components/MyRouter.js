@@ -7,6 +7,7 @@ import Product from "./Product"
 import Header from "./Header"
 import Service from "./Service"
 import Error from "./Error"
+import OtherHook from "./OtherHook"
 
 const MyRouter=(props)=>{
 
@@ -31,6 +32,7 @@ const MyRouter=(props)=>{
                 <NavLink to={`/Product/${props.fruit}`}  className="link-to" style={({isActive})=>isActive?mystyle:undefined}>Product</NavLink>
 
                 <NavLink to="/Service" className="link-to" style={({isActive})=>isActive?mystyle:undefined}>Service</NavLink>
+                <NavLink to="/OtherHook" className="link-to" style={({isActive})=>isActive?mystyle:undefined}>OtherHook</NavLink>
                 </div>
         </nav>
 
@@ -42,6 +44,7 @@ const MyRouter=(props)=>{
             <Route path="/News" element={<News />} />
             <Route path="/Product/:fruitName" element={<Product />} />
             <Route path="/Service" element={<Service />} />
+            <Route path="/OtherHook" element={<OtherHook />} />
             <Route path="*" element={<Error />} />
         </Routes>
         </BrowserRouter>
